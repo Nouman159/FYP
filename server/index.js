@@ -6,7 +6,7 @@ const UserRoutes = require("./Routes/userRoutes");
 
 //Express Server Setup
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5001;
 
 //Express Middlewares
 app.use(express.json());

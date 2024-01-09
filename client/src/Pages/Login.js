@@ -33,7 +33,7 @@ const Login = ({ setIsAuthenticated }) => {
             const response = await userService.loginUser(user);
             const { token } = response;
             if (token) {
-                Cookies.set('jwt-token', token);
+                Cookies.set('auction-jwt-token', token);
                 setIsAuthenticated(true);
                 message.success("Login Successful");
                 navigate("/");
