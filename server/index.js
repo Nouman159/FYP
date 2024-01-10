@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors');
+const path = require("path");
 const mongoose = require('mongoose');
 require('dotenv').config();
 const UserRoutes = require("./Routes/userRoutes");
+const ProductRoutes = require("./Routes/productRoutes");
+const seedProducts = require('./Seeds/productSeeder');
 
 //Express Server Setup
 const app = express();
@@ -23,9 +26,16 @@ mongoose.connect(DB)
             res.send('Server is Up!');
         });
 
+        //Serve Images
+        app.use('/uploads', express.static(path.join(__dirname, 'Photos')));
+
         // Routes
         app.use("/users", UserRoutes);
-        
+        app.use("/products", ProductRoutes);
+
+        // Call the seed function to populate the database
+        // seedProducts();
+
         app.listen(port, () => {
             console.log(`Node/Express Server is Up......\nPort: localhost:${port}`);
         });

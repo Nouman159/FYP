@@ -21,24 +21,24 @@ const Footer = () => {
                                 <h5>Company</h5>
                                 <ul className="nav flex-column">
                                     <li className="nav-item mb-2 ">
-                                        <Link to="/home" className="nav-linl p-0 text-white">Home</Link>
+                                        <Link to="/home" className="nav-linl p-0 text-white black-link">Home</Link>
                                     </li>
                                     <li className="nav-item mb-2 ">
-                                        <Link to="/services" className="nav-linl p-0 text-white">Services</Link>
+                                        <Link to="/services" className="nav-linl p-0 text-white black-link">Services</Link>
                                     </li>
 
                                     <li className="nav-item mb-2 ">
-                                        <Link to="/products" className="nav-linl p-0 text-white">Products</Link>
+                                        <Link to="/products" className="nav-linl p-0 text-white black-link">Products</Link>
                                     </li>
 
                                     {(!role || role === 'user') &&
                                         <li className="nav-item mb-2 ">
-                                            <Link to="/about" className="nav-linl p-0 text-white">About</Link>
+                                            <Link to="/about" className="nav-linl p-0 text-white black-link">About</Link>
                                         </li>
                                     }
                                     {(!role || role === 'user') &&
                                         <li className="nav-item mb-2 ">
-                                            <Link to="/contact" className="nav-linl p-0 text-white">Contact Us</Link>
+                                            <Link to="/contact" className="nav-linl p-0 text-white black-link">Contact Us</Link>
                                         </li>
                                     }
                                 </ul>
@@ -48,15 +48,15 @@ const Footer = () => {
                                     <h5>Menu</h5>
                                     <ul className="nav flex-column">
                                         <li className="nav-item mb-2 ">
-                                            <Link to="#" className="nav-linl p-0 text-white">Art Registration</Link></li>
+                                            <Link to="/services/art-registration" className="nav-linl p-0 text-white black-link">Art Registration</Link></li>
                                         <li className="nav-item mb-2 ">
-                                            <Link to="#" className="nav-linl p-0 text-white">Art Recommendation</Link></li>
+                                            <Link to="/services/recommended-art" className="nav-linl p-0 text-white black-link">Art Recommendation</Link></li>
                                         <li className="nav-item mb-2 ">
-                                            <Link to="#" className="nav-linl p-0 text-white">Live Art Auction</Link></li>
+                                            <Link to="/services/live-auction" className="nav-linl p-0 text-white black-link">Live Art Auction</Link></li>
                                         <li className="nav-item mb-2 ">
-                                            <Link to="#" className="nav-linl p-0 text-white">Commissioned Artwork Request</Link></li>
+                                            <Link to="/services/commissioned-artwork-request" className="nav-linl p-0 text-white black-link">Commissioned Artwork Request</Link></li>
                                         <li className="nav-item mb-2 ">
-                                            <Link to="#" className="nav-linl p-0 text-white">Artwork Authentication Service</Link></li>
+                                            <Link to="/services/artwork-authentication" className="nav-linl p-0 text-white black-link">Artwork Authentication Service</Link></li>
                                     </ul>
                                 </div>
                             }
@@ -76,7 +76,7 @@ const Footer = () => {
                         </div>
 
                         <div className='d-flex justify-content-between pt-4  mt-4 border-top'>
-                            <p>&#169; 2023 Project20 Company, Inc. All rights reserved.</p>
+                            <p>&#169; 2023 Auction Company, Inc. All rights reserved.</p>
                             <ul className="list-unstyled d-flex">
                                 <li className="ms-3">
                                     <Link className="link-light" to="#">

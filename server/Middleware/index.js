@@ -32,10 +32,10 @@ const verifyToken = (req, res, next) => {
       res.locals.payload = payload;
       return next();
     }
-    res.status(401).send({ status: "Error", msg: "Unauthorized" });
+    res.status(401).send("Unauthorized");
   } catch (error) {
     console.log(error);
-    res.status(401).send({ status: "Error", msg: "Verify Token Error!" });
+    res.status(401).send("Verify Token Error!");
   }
 };
 
@@ -46,10 +46,10 @@ const stripToken = (req, res, next) => {
       res.locals.token = token;
       return next();
     }
-    res.status(401).send({ status: "Error", msg: "Unauthorized" });
+    res.status(401).send("Unauthorized");
   } catch (error) {
-    console.log(error);
-    res.status(401).send({ status: "Error", msg: "Strip Token Error!" });
+    console.log('Strip Token Error',error);
+    res.status(401).send("Strip Token Error!");
   }
 };
 

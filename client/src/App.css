@@ -55,7 +55,6 @@ input[type=number] {
 
 /* Optionally, you can style the link when hovered */
 .black-link:hover {
-    text-decoration: underline;
     /* Add underline on hover if desired */
 }
 
