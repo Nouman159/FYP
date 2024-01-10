@@ -1,0 +1,62 @@
+.Products {
+    .title {
+        font-size: 2rem;
+        margin: 20px 0px;
+        text-align: center;
+    }
+
+    .products-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-self: start;
+        padding-bottom: 50px;
+    }
+
+    .product-card {
+        width: 23%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .description {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .owner-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        #owner-name {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    }
+
+    .no-products {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 20px;
+    }
+}

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import "./App.css";
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import Loader from "./Components/Loader";
+import { useSelector } from "react-redux";
 import Navbar from './Components/Navbar.js';
 import Footer from './Components/Footer.js';
 import Login from './Pages/Login.js';
@@ -14,9 +16,12 @@ import Products from './Pages/Products.js';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!Cookies.get('auction-jwt-token'));
+  const { loading } = useSelector((state) => state.loader);
+
   return (
     <div className="App">
-      {isAuthenticated && <Navbar />}
+      {loading && <Loader />}
+      {isAuthenticated && <Navbar setIsAuthenticated={setIsAuthenticated} />}
       <div className='main-content'>
         <Routes>
           <Route path='/' element={!isAuthenticated ? <Navigate to="/login" /> : <Navigate to="/home" />} />
