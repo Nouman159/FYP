@@ -6,8 +6,13 @@ const RegisterProduct = async (req, res) => {
         const file = req.file;
         const baseUrl = `${req.protocol}://${req.get('host')}`;
         const imageUrl = `${baseUrl}/uploads/${file.filename}`;
-        req.body.user = userID;
-        const product = await Product.create(req.body);
+        const data = {
+            user: userID,
+            image: imageUrl,
+            name: req.body.name,
+            description: req.body.description
+        }
+        const product = await Product.create(data);
         if (product) {
             res.status(200).send('Product Registered Successfully');
         }
@@ -37,7 +42,7 @@ const GetAllProducts = async (req, res) => {
 
 const GetAllApprovedProducts = async (req, res) => {
     try {
-        const products = await Product.find({status: "approved"}).populate('user');
+        const products = await Product.find({ status: "approved" }).populate('user');
         if (products && products.length > 0) {
             res.status(200).json(products);
         }

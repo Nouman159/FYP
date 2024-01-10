@@ -27,9 +27,13 @@ const productService = {
             throw error;
         }
     },
-    loginUser: async (payload) => {
+    registerProduct: async (payload) => {
         try {
-            const response = await axiosInstance.post('/products/register-product', payload);
+            const response = await axiosInstance.post('/products/register-product', payload, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             return response.data;
         } catch (error) {
             throw error;

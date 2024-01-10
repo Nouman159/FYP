@@ -24,7 +24,7 @@ const About = () => {
                             <p className="lead mb-4">Discover a new way to experience art and collectibles with our online auction system. We are dedicated to providing a platform where artists, craftsmen, and collectors come together to showcase and acquire unique pieces.</p>
                             <p className="lead mb-4">Our team is passionate about fostering a community that appreciates and values creativity. Whether you're an artist looking to share your work, a craftsman offering unique creations, or a collector seeking one-of-a-kind pieces, our platform is designed to cater to your needs.</p>
                             <p className="lead mb-4">Explore our auctions, connect with talented individuals, and engage in a dynamic marketplace. Join us on this exciting journey of discovery, where creativity knows no bounds.</p>
-                            <NavLink to='/products' className='btn btn-primary rounded-pill px-4 py-2'>Explore Auctions</NavLink>
+                            <NavLink to='/services/live-auction' className='btn btn-primary rounded-pill px-4 py-2'>Explore Auctions</NavLink>
                             <NavLink to='/contact' className='btn btn-outline-primary rounded-pill px-4 py-2 ms-2'>Contact Us</NavLink>
                         </div>
                     </div>
