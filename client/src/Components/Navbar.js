@@ -39,6 +39,20 @@ const Navbar = ({ setIsAuthenticated }) => {
                     <NavLink className={(navData) => navData.isActive ? 'active-link' : 'non-active-link'} to="/contact">
                         Contact Us
                     </NavLink>
+
+                    <NavLink className={(navData) => navData.isActive ? 'active-link' : 'non-active-link'} to="/admin-artwork-approval">
+                        Pending Products
+                    </NavLink>
+
+                    <NavLink className={(navData) => navData.isActive ? 'active-link' : 'non-active-link'} to="/admin-artwork">
+                        Admin Products
+                    </NavLink>
+                    <NavLink className={(navData) => navData.isActive ? 'active-link' : 'non-active-link'} to="/bid-artwork-products">
+                        Bidding Products
+                    </NavLink>
+                    <NavLink className={(navData) => navData.isActive ? 'active-link' : 'non-active-link'} to="/admin/pending-auctions">
+                        Pending Aucs
+                    </NavLink>
                 </div>
 
                 <div className="btn-div">

@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        required: true,
+    },
     image: {
         type: String,
         required: true,
@@ -22,6 +26,15 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: 'pending'
     },
+    type: {
+        type: String,
+        default: 'normal'
+    },
+    auction: {
+        type: String,
+        default: 'false'
+    }
+
 },
     { timestamps: true }
 );

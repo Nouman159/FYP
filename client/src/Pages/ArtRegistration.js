@@ -6,10 +6,12 @@ import { useDispatch } from 'react-redux';
 import { HideLoading, ShowLoading } from '../Redux/loaderSlice';
 
 const ArtRegistration = () => {
+    const categories = ['Painting', 'Sculpture', 'Photography'];
     const dispatch = useDispatch();
     const [artDetails, setArtDetails] = useState({
         image: '',
         name: '',
+        category: '',
         description: '',
     });
 
@@ -35,6 +37,7 @@ const ArtRegistration = () => {
             const formData = new FormData();
             formData.append('productImage', artDetails.image);
             formData.append('name', artDetails.name);
+            formData.append('category', artDetails.category);
             formData.append('description', artDetails.description);
             const response = await productService.registerProduct(formData);
             message.success(response);
@@ -42,7 +45,9 @@ const ArtRegistration = () => {
                 image: '',
                 name: '',
                 description: '',
+                category: ''
             });
+            console.log(response)
         } catch (error) {
             message.error(error.response.data);
         } finally {
@@ -50,10 +55,11 @@ const ArtRegistration = () => {
         }
     };
 
+
     return (
         <div className="Art-Registration">
             <h1 className="title">Art Registration</h1>
-            <form className="art-form" onSubmit={handleSubmit}>
+            <form className="art-form" onSubmit={(e) => handleSubmit(e)}>
                 <div className="form-group">
                     <div className="upload-group">
                         <label htmlFor="image-upload" className="upload-label">
@@ -65,6 +71,7 @@ const ArtRegistration = () => {
                             name="image"
                             accept="image/*"
                             onChange={handleFileChange}
+                            required
                         />
                     </div>
                 </div>
@@ -78,6 +85,21 @@ const ArtRegistration = () => {
                         onChange={handleInputChange}
                         required
                     />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="category">Category:</label>
+                    <select
+                        id="category"
+                        name="category"
+                        value={artDetails.category}
+                        onChange={handleInputChange}
+                        required
+                    >
+                        <option value="" disabled>Select a category</option>
+                        {categories.map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
+                        ))}
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Description:</label>

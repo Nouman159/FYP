@@ -12,6 +12,7 @@ const userService = {
     },
     registerUser: async (payload) => {
         try {
+            console.log(payload)
             const response = await axiosInstance.post('/users/register', payload);
             return response.data;
         } catch (error) {

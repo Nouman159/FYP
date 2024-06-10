@@ -1,66 +1,60 @@
-import React, { useEffect } from 'react'
-import Artwork1 from '../Assets/Artwork1.png';
-import Artwork2 from '../Assets/Artwork2.png';
+import React, { useState, useEffect } from 'react'
+import { HideLoading, ShowLoading } from '../Redux/loaderSlice';
+import productService from '../Services/productService';
+import { useDispatch } from 'react-redux';
+import { message } from 'antd';
+import { Link } from 'react-router-dom';
+import '../Styles/global.css'
 
 const RecommendedArt = () => {
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const [data, setData] = useState([])
+    const dispatch = useDispatch();
+
+    const handleData = async () => {
+        try {
+            dispatch(ShowLoading());
+            const response = await productService.getAllRecommendedProducts();
+            if (response) {
+                setData(response);
+            } else {
+                message.error('Failed to load data');
+            }
+        } catch (error) {
+            message.error(error.response.data);
+        } finally {
+            dispatch(HideLoading());
+        }
+    };
+
+    useEffect(() => {
+        handleData();
+    }, [])
 
     return (
         <div className='Recommended-Art'>
             <section className='featured-artworks'>
-                <h2>Featured Artworks</h2>
+                <h2>Recommended Artworks</h2>
                 <div className='artworks-container'>
-                    {/* Replace the placeholders with actual artwork components */}
-                    <div className='artwork'>
-                        <img src={Artwork1} alt='Artwork 1' />
-                        <h3>Artwork Title</h3>
-                        <p>Artist: Artist Name</p>
-                        <button>View Details</button>
-                    </div>
+                    {
+                        (!data || data.length === 0) ? (
+                            <div className='no-data'>No Recommended Products</div>
+                        ) : (
 
-                    <div className='artwork'>
-                        <img src={Artwork2} alt='Artwork 2' />
-                        <h3>Artwork Title</h3>
-                        <p>Artist: Artist Name</p>
-                        <button>View Details</button>
-                    </div>
-                    <div className='artwork'>
-                        <img src={Artwork1} alt='Artwork 1' />
-                        <h3>Artwork Title</h3>
-                        <p>Artist: Artist Name</p>
-                        <button>View Details</button>
-                    </div>
-
-                    <div className='artwork'>
-                        <img src={Artwork2} alt='Artwork 2' />
-                        <h3>Artwork Title</h3>
-                        <p>Artist: Artist Name</p>
-                        <button>View Details</button>
-                    </div>
-
-                    <div className='artwork'>
-                        <img src={Artwork1} alt='Artwork 1' />
-                        <h3>Artwork Title</h3>
-                        <p>Artist: Artist Name</p>
-                        <button>View Details</button>
-                    </div>
-
-                    <div className='artwork'>
-                        <img src={Artwork2} alt='Artwork 2' />
-                        <h3>Artwork Title</h3>
-                        <p>Artist: Artist Name</p>
-                        <button>View Details</button>
-                    </div>
-
-
-                    {/* Add more artworks as needed */}
+                            data?.map((d, index) => (
+                                <div className='artwork' key={index}>
+                                    <img src={d.image} alt='Artwork 1' />
+                                    <h3>{d.name}</h3>
+                                    <p>Artist: {d.user.name}</p>
+                                </div>
+                            ))
+                        )}
                 </div>
             </section>
         </div>
     )
-};
+}
 
-export default RecommendedArt;
+export default RecommendedArt

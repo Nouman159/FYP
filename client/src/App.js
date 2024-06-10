@@ -18,6 +18,17 @@ import LiveAuction from './Pages/LiveAuction.js';
 import RecommendedArt from './Pages/RecommendedArt.js';
 import CommissionArtworkRequest from './Pages/CommissionedArtworkRequest.js';
 import Products from './Pages/Products.js';
+import ArtWorkApprovalRejection from './Pages/ArtWorkApprovalRejection.js';
+import ArtWorkDetail from './Pages/ArtWorkDetail.js';
+import ArtworkDetail from './Pages/ArtWorkDetail.js';
+import AdminArtWork from './Pages/AdminArtWork.js';
+import ApprovedArtworkDetail from './Pages/ApprovedArtWorkDetail.js';
+import CuratedArtWork from './Pages/CuratedArtwork.js';
+import BidForAuctionProducts from './Pages/BidForAuctionProducts.js';
+import BidProductDetails from './Pages/BidProductDetails.js';
+import PendingAuctions from './Pages/PendingAuctions.js';
+import PendingAuctionsForm from './Pages/PendingAuctionsForm.js';
+import Bid from './Pages/Bid.js';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!Cookies.get('auction-jwt-token'));
@@ -40,9 +51,20 @@ function App() {
           <Route path='/services/artwork-authentication' element={!isAuthenticated ? <Navigate to="/login" /> : <ArtworkAuthentication />} />
           <Route path='/services/commissioned-artwork-request' element={!isAuthenticated ? <Navigate to="/login" /> : <CommissionArtworkRequest />} />
           <Route path='/services/live-auction' element={!isAuthenticated ? <Navigate to="/login" /> : <LiveAuction />} />
+          <Route path='/services/live-auction-bid/:id' element={!isAuthenticated ? <Navigate to="/login" /> : <Bid />} />
           <Route path='/services/recommended-art' element={!isAuthenticated ? <Navigate to="/login" /> : <RecommendedArt />} />
+          <Route path='/services/curated-art' element={!isAuthenticated ? <Navigate to="/login" /> : <CuratedArtWork />} />
 
-          <Route path='/products' element={!isAuthenticated ? <Navigate to="/login" /> : <Products />} />
+          <Route path='/bid-artwork-products' element={!isAuthenticated ? <Navigate to="/login" /> : <BidForAuctionProducts />} />
+          <Route path='/bid-artwork-products/:id' element={!isAuthenticated ? <Navigate to="/login" /> : <BidProductDetails />} />
+
+          <Route path='/admin-artwork' element={!isAuthenticated ? <Navigate to="/login" /> : <AdminArtWork />} />
+          <Route path='/admin-artwork-approval' element={!isAuthenticated ? <Navigate to="/login" /> : <ArtWorkApprovalRejection />} />
+          <Route path='/admin/artwork-approval/:id' element={!isAuthenticated ? <Navigate to="/login" /> : <ArtworkDetail />} />
+          <Route path='/admin/artwork-recommendation/:id' element={!isAuthenticated ? <Navigate to="/login" /> : <ApprovedArtworkDetail />} />
+          <Route path='/admin/pending-auctions' element={!isAuthenticated ? <Navigate to="/login" /> : <PendingAuctions />} />
+          <Route path='/admin/pending-auctions/:id' element={!isAuthenticated ? <Navigate to="/login" /> : <PendingAuctionsForm />} />
+
         </Routes>
       </div>
       {isAuthenticated && <Footer />}

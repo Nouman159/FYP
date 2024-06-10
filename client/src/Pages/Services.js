@@ -65,7 +65,7 @@ const Services = ({ isAuthenticated }) => {
                                 </NavLink>
                             </div>
                             <div className="col-md-4">
-                                <NavLink to="/products" className="black-link">
+                                <NavLink to="/services/curated-art" className="black-link">
                                     <div className="card p-3">
                                         <div className="card-body text-center">
                                             <i className="fa fa-archive fa-4x mb-4 text-primary"></i>

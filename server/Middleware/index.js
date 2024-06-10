@@ -6,7 +6,6 @@ const APP_SECRET = process.env.APP_SECRET;
 
 const hashPassword = async (password) => {
   let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
-
   return hashedPassword;
 };
 
@@ -34,7 +33,7 @@ const verifyToken = (req, res, next) => {
     }
     res.status(401).send("Unauthorized");
   } catch (error) {
-    console.log(error);
+    console.log("Error is " + error);
     res.status(401).send("Verify Token Error!");
   }
 };
@@ -48,7 +47,7 @@ const stripToken = (req, res, next) => {
     }
     res.status(401).send("Unauthorized");
   } catch (error) {
-    console.log('Strip Token Error',error);
+    console.log('Strip Token Error', error);
     res.status(401).send("Strip Token Error!");
   }
 };
